@@ -1,19 +1,25 @@
 class Solution:
-  def convert(self, s: str, n: int) -> str:
-    allLevels = [''] * n
+def convert(self, s: str, n: int) -> str:
+  # Initialize all layers
+  allLevels = [''] * n
 
-    inc = +1 if n > 1 else 0
-    level = 0
+  # Init ZigZag step (for n <= 1 => step = 0)
+  inc = +1 if n > 1 else 0
+  level = 0
 
-    for char in s:
-      allLevels[level]  += char
+  for char in s:
+    # Add char in particular level
+    allLevels[level] += char
 
-      level += inc
+    # Change level of ZigZag
+    level += inc
 
-      if level == n - 1 or level == 0:
-        inc *= -1
+    # If level on edge , then change step direction
+    if level == n - 1 or level == 0:
+      inc *= -1
 
-    return ''.join(allLevels)
+  # Join all levels
+  return ''.join(allLevels)
 
 my = Solution()
 
